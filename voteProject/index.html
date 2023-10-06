@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div>
+      <h2 id="voteValueDisplay"></h2>
+    </div>
+    <div>
+      <button onclick="you_can_vote()" id="vote">vote</button>
+      <button onclick="you_cannot_vote()" id="cannot_vote">cannotVote</button>
+    </div>
+  </body>
+</html>
+<script>
+  let age = 18;
+
+  function voteValueDom() {
+    let age = document.getElementById("voteValueDisplay");
+    age.innerText = age;
+  }
+
+  function can_vote() {
+    if (age >= 18) CanVote = document.getElementById("vote");
+    CanVote.innerText = age;
+  }
+  function cannot_vote() {
+    if (age < 18) canNotVote = document.getElementById("Cannot_vote");
+    canNotVote.innerText = age;
+  }
+  function you_can_vote() {
+    age;
+    can_vote();
+    voteValueDom();
+  }
+  function you_cannot_vote() {
+    age;
+    cannot_vote();
+    voteValueDom();
+  }
+</script>
