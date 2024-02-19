@@ -3,43 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
+    <title>Basic Form</title>
   </head>
   <body>
-    <div>
-      <h2 id="voteValueDisplay"></h2>
-    </div>
-    <div>
-      <button onclick="you_can_vote()" id="vote">vote</button>
-      <button onclick="you_cannot_vote()" id="cannot_vote">cannotVote</button>
+    <div class="container">
+      <div class="form">
+        <h1>Voter Form</h1>
+        <form onsubmit="submitHandler(event)">
+          <input type="text" placeholder="enter your name" id="name" value="" />
+          <input type="number" placeholder="enter your age" id="age" value="" />
+          <button>Submit</button>
+        </form>
+      </div>
+      <div class="result">
+        <h2>Your result will appear here : <span id="result"></span></h2>
+      </div>
     </div>
   </body>
 </html>
+
 <script>
-  let age = 18;
+  let nameValueGlobal;
+  let ageValueGlobal;
 
-  function voteValueDom() {
-    let age = document.getElementById("voteValueDisplay");
-    age.innerText = age;
+  // function updateDOM() {
+  //   let result = document.getElementById("result");
+
+  //   if (ageValueGlobal >= 18) {
+  //     result.innerText = `${nameValueGlobal} you can vote`;
+  //   } else {
+  //     result.innerText = `${nameValueGlobal} you can not vote`;
+  //   }
+  // }
+
+  function updateDOM() {
+    let result = document.getElementById("result");
+
+    if (ageValueGlobal >= 18) {
+      result.innerText = `${nameValueGlobal} you can vote`;
+    } else {
+      result.innerText = `${nameValueGlobal} you can not vote`;
+    }
   }
 
-  function can_vote() {
-    if (age >= 18) CanVote = document.getElementById("vote");
-    CanVote.innerText = age;
-  }
-  function cannot_vote() {
-    if (age < 18) canNotVote = document.getElementById("Cannot_vote");
-    canNotVote.innerText = age;
-  }
-  function you_can_vote() {
-    age;
-    can_vote();
-    voteValueDom();
-  }
-  function you_cannot_vote() {
-    age;
-    cannot_vote();
-    voteValueDom();
+  function submitHandler(event) {
+    event.preventDefault(); // it will prevent refreshing of the page
+    let name = document.getElementById("name");
+    let nameValue = name.value;
+
+    let age = document.getElementById("age");
+    let ageValue = age.value;
+
+    nameValueGlobal = nameValue;
+    ageValueGlobal = ageValue;
+
+    name.value = ""; //empty string
+    age.value = ""; //empty string
+    updateDOM();
   }
 </script>
